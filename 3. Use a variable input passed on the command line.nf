@@ -29,7 +29,7 @@ workflow {
 
     main:
     // emit a greeting
-    sayHello()
+    sayHello(params.input)
 
     publish:
     first_output = sayHello.out
@@ -40,3 +40,10 @@ output {
         mode 'copy'
     }
 }
+
+nextflow run hello-world.nf --input 'Bonjour le monde!'
+
+# You can readily distinguish Nextflow-level parameters from pipeline-level parameters.
+
+# Parameters that apply to a pipeline always take a double hyphen (--).
+# Parameters that modify a Nextflow setting, e.g. the -resume feature we used earlier, take a single hyphen (-).
